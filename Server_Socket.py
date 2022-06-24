@@ -1,7 +1,8 @@
 import os
 import socket
+from socketserver import BaseRequestHandler, TCPServer
 import threading
-import SocketServer
+import socketserver
 
 SERVER_HOST = 'localhost'
 SERVER_PORT = 0 # tells the kernel to pick up a port dynamically
@@ -18,14 +19,14 @@ def client(ip, port, message):
     finally:
         sock.close()
 
-class ThreadedTCPRequestHandler(SocketServer.BaseRequestHandler):
+class ThreadedTCPRequestHandler(socketserver.BaseRequestHandler):
     """ An example of threaded TCP request handler """
     def handle(self):
         data = self.request.recv(1024)
         current_thread = threading.current_thread()
         response = "%s: %s" %(current_thread.name, data)
         self.request.sendall(response)
-class ThreadedTCPServer(SocketServer.ThreadingMixIn, SocketServer.
+class ThreadedTCPServer(socketserver.ThreadingMixIn, socketserver.
 TCPServer):
     """Nothing to add here, inherited everything necessary from 
     parents"""
