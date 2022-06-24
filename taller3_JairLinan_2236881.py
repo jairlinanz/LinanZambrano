@@ -1,39 +1,30 @@
-print()
-print("Evidencia_taller_3 y solucion: ")
-print()
-
 import os
+import csv
+from operator import delitem
+import operator
+
+print("\nEvidencia_taller_3 y solucion: \n")
+
 contenidocarpeta= os.listdir('C:/Users/Personal/Desktop/LinanZambrano/Files')
-print()
 
 ruta='C:/Users/Personal/Desktop/LinanZambrano/Files'
 
-
-print("1. lista de archivos de la carpeta Desktop/LinanZambrano/Files: ",contenidocarpeta)
-print()
-print("Nombres, extenciones y ruta de los archivos contenidos en la carpeta: ")
-print()
+print("\n1. lista de archivos de la carpeta Desktop/LinanZambrano/Files: ",contenidocarpeta)
+print("\n Nombres, extenciones y ruta de los archivos contenidos en la carpeta: \n")
 
 for archivo in contenidocarpeta:
     nombre, extension = os.path.splitext(archivo)
     print("El nombre del archivo es '{}' y la extension es '{}', su ruta es: {}".format(nombre, extension, ruta))
 
-print()
-print("2. Este es el contenido del archivo Usuarios.csv: ")
-print()
-import csv
-from operator import delitem
-import operator
+print("\n 2. Este es el contenido del archivo Usuarios.csv: \n")
+
 
 with open('C:/Users/Personal/Desktop/LinanZambrano/Files/Usuarios.csv', newline='') as f:
     reader = csv.reader(f)
     for row in reader:
         print(row)
 
-print()
-print("3. Esta es la informacion solicitada, del archivo Usuarios.csv, con las columnas solicitadas: ")
-print()
-import csv
+print("\n 3. Esta es la informacion solicitada, del archivo Usuarios.csv, con las columnas solicitadas: \n")
 
 with open('C:/Users/Personal/Desktop/LinanZambrano/Files/Usuarios.csv') as f:
     reader = csv.reader(f, delimiter=',')
